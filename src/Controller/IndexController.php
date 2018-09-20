@@ -6,9 +6,11 @@
  * @author ssanchez
  */
 
-namespace app\Controller;
+namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
-class IndexController {
+class IndexController extends AbstractController {
     
 }
