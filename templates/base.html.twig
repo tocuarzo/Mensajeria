@@ -3,8 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Registrese{% endblock %}</title>
+        <link href="{{ asset("css/bootstrap.css") }}" type="text/css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
-    <body>
+    <body class="bg-light">
         {% block body %}{% endblock %}
+        <script type="text/javascript" src="{{ asset("js/bootstrap.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("js/Jquery.js") }}"></script>
+        {% block javascript %}
+        {% endblock %}
     </body>
 </html>
