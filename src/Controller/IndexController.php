@@ -33,8 +33,8 @@ class IndexController extends AbstractController {
      */
     public function newUser(Request $request, UserPasswordEncoderInterface $encoder){
         $bd = new DatabaseOperations($this->getDoctrine()->getManager());
-        $bd->newUser(new Usuario(), $request, $encoder);
         if ($request->getMethod() === "POST"){
+            $bd->newUser(new Usuario(), $request, $encoder);
             return new Response("Usuario creado con exito");
         } else {
             return new Response("Error 400: BAD REQUEST MODERFAKER", Response::HTTP_BAD_REQUEST);
