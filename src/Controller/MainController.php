@@ -11,14 +11,17 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route as ruta;
-
+/**
+ * @ruta("/main")
+ */
 class MainController extends AbstractController
 {
     /**
-     * @ruta("/main", name="main")
+     * @ruta("/", name="main")
      */
     public function main(){
 
+        $this->render("main/main.html.twig", array("usuario" => $this->getUser()));
     }
 
 }

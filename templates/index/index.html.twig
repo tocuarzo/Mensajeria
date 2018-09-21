@@ -2,28 +2,92 @@
 {% block body %}
 <div style="margin-top: 100px;" class="container">
     <div class="row justify-content-center">
-        <form id="login" class="jumbotron p-4" action="javascript:autenticar()">
+        <form id="login" class="jumbotron p-4" action="{{ path('index') }}" method="post">
             <h5>Inicie sesión para empezar a usar la aplicación</h5>
-            <fieldset class="form-group">
-                <label class="col-form-label">Usuario</label>
-                <input name="user" type="text" class="form-control">
-            </fieldset>
-            <fieldset class="form-group">
-                <label class="col-form-label">Password</label>
-                <input name="password" type="password" class="form-control">
-            </fieldset>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend w-25">
+                    <label class="input-group-text w-100 float-right">Usuario</label>
+                </div>
+                <input name="_username" type="text" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend w-25">
+                    <label class="input-group-text w-100 float-right">Password</label>
+                </div>
+                <input name="_password" type="password" class="form-control">
+            </div>
+            {% if error %}
+                <div class="text-danger">{{ error.message }}</div>
+            {% endif %}
             <div class="form-group m-auto form-row justify-content-center">
                 <input type="submit" class="btn btn-primary">
             </div>
         </form>
     </div>
+    <div class="row justify-content-center">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Registrarse
+        </button>
+    </div>
 </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Formulario de Registro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="registroform" action="javascript:registro()">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text">Nombre de usuario</label>
+                            </div>
+                            <input id="nick" class="form-control" name="nick">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text">Contraseña</label>
+                            </div>
+                            <input id="password" class="form-control" name="pass">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text">Confirmar Contraseña</label>
+                            </div>
+                            <input id="password2" class="form-control" name="pass2">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text">Avatar</label>
+                            </div>
+                            <input id="avatar" class="form-control" type="file" name="avatar">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <input form="registroform" type="submit" class="btn btn-primary">
+                </div>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
-        function autenticar(form) {
-            var user = $("input[name='user']");
-            var password = $("input[name='password']");
-            console.log(user.val());
-            console.log(password.val());
+        function registro() {
+            var nick = $("#nick").val();
+            var password = $("#password").val();
+            $.post("{{ path('newuser') }}",{
+                    nick: nick,
+                    password: password
+                },
+                function (data) {
+                    alert("registrado con exito");
+                    $("#exampleModalCenter").toggle();
+                })
         }
     </script>
+
 {% endblock %}
