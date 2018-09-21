@@ -18,7 +18,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class IndexController extends AbstractController {
-    private $bd;
     /**
      * @ruta("/", name="index")
      */

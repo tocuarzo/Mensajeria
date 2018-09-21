@@ -10,14 +10,14 @@ namespace App\Models;
 
 
 use App\Entity\Usuario;
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class DatabaseOperations {
     private $em;
 
-    public function __construct(EntityManager $manager){
+    public function __construct(ObjectManager $manager){
         $this->em = $manager;
     }
     public function newUser (Usuario $usuario, Request $request, UserPasswordEncoderInterface $encoder = null) {
