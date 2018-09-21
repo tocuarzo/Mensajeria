@@ -28,11 +28,12 @@ class Usuario implements UserInterface, \Serializable
     private $password;
     /**
      *  @ORM\Column(type="text", nullable=true)
+     *
      */
     private $avatar;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\UsuarioMensaje", mappedBy="receptor", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Mensaje", mappedBy="receptor", orphanRemoval=true)
      */
     private $mensajes;
 

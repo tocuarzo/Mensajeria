@@ -31,6 +31,17 @@ class Mensaje
      */
 
     private $hora;
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Usuario")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $remitente;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Usuario", inversedBy="mensajes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $receptor;
 
     public function getId(): ?int
     {
@@ -89,5 +100,37 @@ class Mensaje
     public function setHora($hora): void
     {
         $this->hora = $hora;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRemitente()
+    {
+        return $this->remitente;
+    }
+
+    /**
+     * @param mixed $remitente
+     */
+    public function setRemitente($remitente): void
+    {
+        $this->remitente = $remitente;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReceptor()
+    {
+        return $this->receptor;
+    }
+
+    /**
+     * @param mixed $receptor
+     */
+    public function setReceptor($receptor): void
+    {
+        $this->receptor = $receptor;
     }
 }

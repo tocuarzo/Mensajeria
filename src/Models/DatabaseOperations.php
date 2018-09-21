@@ -9,6 +9,7 @@
 namespace App\Models;
 
 
+use App\Entity\Mensaje;
 use App\Entity\Usuario;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,9 +17,11 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class DatabaseOperations {
     private $em;
+    private $usuario;
 
-    public function __construct(ObjectManager $manager){
+    public function __construct(ObjectManager $manager, Usuario $user = null){
         $this->em = $manager;
+        $this->usuario = $user;
     }
     public function newUser (Usuario $usuario, Request $request, UserPasswordEncoderInterface $encoder = null) {
         $usuario->setNick($request->request->get("nick"));
@@ -32,4 +35,9 @@ class DatabaseOperations {
         $this->em->persist($usuario);
         $this->em->flush();
     }
+    public function getMensajes(){
+       $mensajes = $this->em->getRepository(Mensaje::class)->findAll();
+       return $mensajes;
+    }
+
 }
