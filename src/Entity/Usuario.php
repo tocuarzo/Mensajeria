@@ -39,7 +39,7 @@ class Usuario implements UserInterface, \Serializable
 
     public function __construct()
     {
-        $this->MensajesUsuario = new ArrayCollection();
+        $this->mensajes = new ArrayCollection();
     }
 
     public function getId(): ? int
@@ -52,7 +52,7 @@ class Usuario implements UserInterface, \Serializable
      */
     public function getMensajesUsuario(): Collection
     {
-        return $this->MensajesUsuario;
+        return $this->mensajes;
     }
 
     /**
@@ -131,7 +131,7 @@ class Usuario implements UserInterface, \Serializable
 
     public function getUsername()
     {
-        return $this->getUsername();
+        return $this->nick;
     }
 
     public function eraseCredentials()
@@ -143,7 +143,7 @@ class Usuario implements UserInterface, \Serializable
     {
         return serialize(array(
             $this->id,
-            $this->user,
+            $this->nick,
             $this->password,
             // see section on salt below
             // $this->salt,
@@ -160,6 +160,4 @@ class Usuario implements UserInterface, \Serializable
             // $this->salt
             ) = unserialize($serialized, array('allowed_classes' => false));
     }
-
-
 }

@@ -20,8 +20,7 @@ class MainController extends AbstractController
      * @ruta("/", name="main")
      */
     public function main(){
-
-        $this->render("main/main.html.twig", array("usuario" => $this->getUser()));
+        return $this->render("main/main.html.twig", array("usuario" => $this->getUser()));
     }
 
 }
