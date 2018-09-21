@@ -22,6 +22,7 @@ class IndexController extends AbstractController {
      * @ruta("/", name="index")
      */
     public function index(AuthenticationUtils $authenticationUtils){
+        if ($this->getUser() != null) return $this->redirectToRoute("main"); //Redirige en caso de estar autenticado
         return $this->render("index/index.html.twig", array(
             "error" => $authenticationUtils->getLastAuthenticationError(),
             "last_username" => $authenticationUtils->getLastUsername()

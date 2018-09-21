@@ -2,7 +2,7 @@
 {% block body %}
 <div style="margin-top: 100px;" class="container">
     <div class="row justify-content-center">
-        <form id="login" class="jumbotron p-4" method="post">
+        <form id="login" class="jumbotron p-4" method="POST">
             <h5>Inicie sesión para empezar a usar la aplicación</h5>
             <div class="input-group mb-3">
                 <div class="input-group-prepend w-25">
@@ -22,6 +22,7 @@
             <div class="form-group m-auto form-row justify-content-center">
                 <input type="submit" class="btn btn-primary">
             </div>
+            <!-- <input type="hidden" name="_target_path" value="{{ path('main') }}"  />-->
         </form>
     </div>
     <div class="row justify-content-center">
@@ -43,28 +44,28 @@
             <div class="modal-body">
                 <form id="registroform" action="javascript:registro()">
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text">Nombre de usuario</label>
+                        <div class="input-group-prepend registro-label">
+                            <label class="input-group-text w-100">Nombre de usuario</label>
                         </div>
-                        <input id="nick" class="form-control" name="nick">
+                        <input id="nick" class="form-control registro-field" name="nick">
                     </div>
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text">Contraseña</label>
+                        <div class="input-group-prepend registro-label">
+                            <label class="input-group-text w-100">Contraseña</label>
                         </div>
-                        <input id="password" type="password" class="form-control" name="pass">
+                        <input id="password" type="password" class="form-control registro-field" name="pass">
                     </div>
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text">Confirmar Contraseña</label>
+                        <div class="input-group-prepend registro-label">
+                            <label class="input-group-text w-100">Confirmar Contraseña</label>
                         </div>
-                        <input id="password2" type="password" class="form-control" name="pass2">
+                        <input id="password2" type="password" class="form-control registro-field" name="pass2">
                     </div>
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text">Avatar</label>
+                        <div class="input-group-prepend registro-label">
+                            <label class="input-group-text w-100">Avatar</label>
                         </div>
-                        <input id="avatar" class="form-control" type="file" name="avatar">
+                        <input id="avatar" class="form-control registro-field" type="file" name="avatar">
                     </div>
                 </form>
             </div>

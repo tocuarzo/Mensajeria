@@ -10,19 +10,22 @@ security:
             algorithm: bcrypt
             cost: 13
     firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
         main:
             anonymous: true
-            provider: login
             form_login:
                 login_path: index
                 check_path: index
                 default_target_path: main
                 always_use_default_target_path: true
+            provider: login
             logout:
-                path:   /logout
+                path: /logout
                 target: /
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
     access_control:
-    - { path: ^/main, roles: ROLE_USER }
+    - { path: ^/main, roles: ROLE_ADMIN }
     # - { path: ^/zonaAdmin, roles: ROLE_ADMIN }

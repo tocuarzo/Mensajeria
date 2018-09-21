@@ -23,7 +23,7 @@ class UsuarioMensaje
     private $remitente;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Usuario")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Usuario", inversedBy="mensajes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $receptor;

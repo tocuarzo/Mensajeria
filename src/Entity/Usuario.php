@@ -154,10 +154,10 @@ class Usuario implements UserInterface, \Serializable
     {
         list (
             $this->id,
-            $this->user,
+            $this->nick,
             $this->password,
             // see section on salt below
             // $this->salt
-            ) = unserialize($serialized, array('allowed_classes' => false));
+            ) = unserialize($serialized);
     }
 }
